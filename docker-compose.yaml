@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  nuget-server:
+    image: loicsharma/baget:latest
+    ports:
+      - "5555:80"
+    healthcheck:
+      test: 'curl -i http://localhost:80/v3/index.json 2>&1 | grep "200 OK" || exit 1'
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - baget_packages:/var/baget
+    env_file:
+      - baget.env
+volumes:
+  baget_packages:

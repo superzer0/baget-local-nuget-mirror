@@ -1,2 +1,2 @@
-docker run --rm --name nuget-server -p 5555:80 -d --env-file baget.env -v "baget_packages:/var/baget" loicsharma/baget:latest
+docker compose -f .\docker-compose.yaml up --detach --no-recreate --no-build --quiet-pull --wait
 Write-Host "BaGet is running as nuget-server at localhost:5555"
