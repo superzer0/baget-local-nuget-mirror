@@ -3,7 +3,7 @@ $destination = "http://localhost:5555/v3/index.json"
 
 nuget setapikey "pass" -Source $destination
 
-$packages = nuget list -AllVersions -Source $source
+$packages = nuget list -AllVersions -PreRelease -Source $source
 
 $packages | % {
   $id, $version = $_ -Split " "
